@@ -71,7 +71,9 @@ function setTime() {
   const ampm = hours >= 12 ? 'PM' : 'AM';
 
   hourEl.style.transform = `translate(-50%, -100%) rotate(${
-    hoursForClock === 0 ? 360 : scale(hoursForClock, 0, 11, 0, 359)
+    hoursForClock === 0
+      ? 360
+      : scale(hoursForClock, 0, 11, 0, 330 + (minute / 60) * 30)
   }deg )`;
 
   minuteEl.style.transform = `translate(-50%, -100%) rotate(${
