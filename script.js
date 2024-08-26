@@ -75,7 +75,7 @@ function setTime() {
   }deg )`;
 
   minuteEl.style.transform = `translate(-50%, -100%) rotate(${
-    minute === 0 ? 360 : scale(minute, 0, 59, 0, 359)
+    minute === 0 ? 360 : minute * 6
   }deg )`;
 
   secondEl.style.transform = `translate(-50%, -100%) rotate(${
