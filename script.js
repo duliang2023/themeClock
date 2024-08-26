@@ -53,9 +53,9 @@ toggleEl.addEventListener('click', (e) => {
   const html = document.querySelector('html');
   html.classList.toggle('dark');
   if (html.classList.contains('dark')) {
-    e.target.innerHTML = 'Light Mode';
+    e.target.innerHTML = 'Go to Light Mode';
   } else {
-    e.target.innerHTML = 'Dark Mode';
+    e.target.innerHTML = 'Go to Dark Mode';
   }
 });
 
