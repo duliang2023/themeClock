@@ -65,19 +65,19 @@ function setTime() {
   const date = time.getDate();
   const day = time.getDay();
   const hours = time.getHours();
-  const hoursForClock = hours % 12;
+  const hoursForClock = hours % 12 === 0 ? 12 : hours % 12;
   const minute = time.getMinutes();
   const seconds = time.getSeconds();
   const ampm = hours >= 12 ? 'PM' : 'AM';
 
   hourEl.style.transform = `translate(-50%, -100%) rotate(${
-    hoursForClock === 0
+    hours % 12 === 0 && minute === 0 && seconds === 0
       ? 360
       : scale(hoursForClock, 0, 11, 0, 330 + (minute / 60) * 30)
   }deg )`;
 
   minuteEl.style.transform = `translate(-50%, -100%) rotate(${
-    minute === 0 ? 360 : minute * 6
+    minute === 0 && seconds === 0 ? 360 : minute * 6
   }deg )`;
 
   secondEl.style.transform = `translate(-50%, -100%) rotate(${
@@ -101,9 +101,6 @@ function setTime() {
   } ${ampm}`;
 
   dateEl.innerHTML = `${days[day]},${months[month]} <span class="circle">${date}</span>`;
-
-  console.log(seconds);
-  console.log(seconds * 6);
 }
 
 const scale = (num, in_min, in_max, out_min, out_max) => {
